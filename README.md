@@ -38,6 +38,14 @@ The system searches the database using SQL filtering + semantic similarity searc
 - report/         → project report
 - demo/           → demo video
 
+Milestone progress
+
+- M0 — Registration
+- M1 — Schema design & DDL
+- M2 — Dataset & queries
+- M3 — Performance evidence
+- Final submission
+ 
 ## Setup
 
 ```bash
