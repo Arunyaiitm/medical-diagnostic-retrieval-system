@@ -31,12 +31,12 @@ The system searches the database using SQL filtering + semantic similarity searc
 - **Seed data:** doctors, departments, visits, prescriptions generated via `data/seed_data.py` with realistic medical constraints
 
 ## Repository structure
-schema/         → ER diagram (Chen notation) + schema.sql
-data/           → dataset + seed script
-queries/        → SQL queries (aggregation, joins, CTEs, window functions)
-app/            → Python RAG application
-report/         → project report
-demo/           → demo video
+- schema/         → ER diagram (Chen notation) + schema.sql
+- data/           → dataset + seed script
+- queries/        → SQL queries (aggregation, joins, CTEs, window functions)
+- app/            → Python RAG application
+- report/         → project report
+- demo/           → demo video
 
 ## Setup
 
