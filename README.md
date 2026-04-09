@@ -1,4 +1,4 @@
-# medical-diagnostic-retrieval-systemMedical Diagnostic Retrieval System
+Medical Diagnostic Retrieval System
 A natural language query system for hospital radiology records. Doctors can ask questions in plain English instead of writing SQL, and the system returns answers grounded in real patient data.
 Track: A — RAG Pipeline
 Database: PostgreSQL + pgvector
