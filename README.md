@@ -55,7 +55,11 @@ python data/seed_data.py
 python app/main.py
 ```
 
+## Team
+
+- Arunya (ZDA24B031)
+- Srijan Reddy Sankepally (ZDA24B007)
+
 ## AI usage disclosure
 
 Used Claude (Anthropic) for brainstorming schema design, debugging SQL, and drafting seed script logic. All output was reviewed, understood, and adapted before use.
-
