@@ -38,6 +38,14 @@ The system searches the database using SQL filtering + semantic similarity searc
 - report/         → project report
 - demo/           → demo video
 
+## Milestone progress
+
+M0 — Registration
+M1 — Schema design & DDL
+M2 — Dataset & queries
+M3 — Performance evidence
+Final submission
+
 ## Setup
 
 ```bash
@@ -46,6 +54,9 @@ psql -U postgres -d medical_rag -f schema/schema.sql
 python data/seed_data.py
 python app/main.py
 ```
+## Team
+- Arunya (ZDA24B031)
+- Srijan Reddy Sankepally (ZDA24B007)
 
 ## AI usage disclosure
 
