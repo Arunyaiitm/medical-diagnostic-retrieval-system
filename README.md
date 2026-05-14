@@ -2,7 +2,7 @@
 
 **Team:** Arunya, Srijan Reddy Sankepally
 **Track:** A — RAG Pipeline | **Database:** PostgreSQL 16
-**GitHub:** https://github.com/Arunyaiitm/medical-diagnostic-retrieval-system
+
 
 ---
 
