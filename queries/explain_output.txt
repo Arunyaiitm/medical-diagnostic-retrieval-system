@@ -1,0 +1,184 @@
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+DROP INDEX
+                                                                         QUERY PLAN                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=124.23..356.80 rows=16 width=35) (actual time=0.369..1.751 rows=16 loops=1)
+   ->  Nested Loop  (cost=123.95..335.68 rows=62 width=29) (actual time=0.349..1.523 rows=64 loops=1)
+         ->  Hash Join  (cost=123.66..313.41 rows=62 width=29) (actual time=0.341..1.244 rows=64 loops=1)
+               Hash Cond: (s.scan_id = diag.scan_id)
+               ->  Seq Scan on scans s  (cost=0.00..126.06 rows=5606 width=8) (actual time=0.006..0.568 rows=5606 loops=1)
+               ->  Hash  (cost=122.89..122.89 rows=62 width=29) (actual time=0.320..0.322 rows=64 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 13kB
+                     ->  Bitmap Heap Scan on diagnoses diag  (cost=4.76..122.89 rows=62 width=29) (actual time=0.052..0.291 rows=64 loops=1)
+                           Recheck Cond: ((finding_label)::text = 'Pneumonia'::text)
+                           Heap Blocks: exact=50
+                           ->  Bitmap Index Scan on idx_diagnoses_finding_date  (cost=0.00..4.75 rows=62 width=0) (actual time=0.023..0.023 rows=64 loops=1)
+                                 Index Cond: ((finding_label)::text = 'Pneumonia'::text)
+         ->  Index Scan using visits_pkey on visits v  (cost=0.28..0.36 rows=1 width=8) (actual time=0.004..0.004 rows=1 loops=64)
+               Index Cond: (visit_id = s.visit_id)
+   ->  Index Scan using patients_pkey on patients p  (cost=0.28..0.34 rows=1 width=10) (actual time=0.003..0.003 rows=0 loops=64)
+         Index Cond: (patient_id = v.patient_id)
+         Filter: ((age > 50) AND (gender = 'M'::bpchar))
+         Rows Removed by Filter: 1
+ Planning Time: 3.564 ms
+ Execution Time: 1.867 ms
+(20 rows)
+
+                                                                  QUERY PLAN                                                                  
+----------------------------------------------------------------------------------------------------------------------------------------------
+ WindowAgg  (cost=854.80..994.38 rows=6979 width=552) (actual time=5.781..5.804 rows=30 loops=1)
+   ->  Sort  (cost=854.80..872.24 rows=6979 width=544) (actual time=5.775..5.780 rows=30 loops=1)
+         Sort Key: d.department_name, (count(diag.diagnosis_id)) DESC
+         Sort Method: quicksort  Memory: 26kB
+         ->  HashAggregate  (cost=339.44..409.23 rows=6979 width=544) (actual time=5.692..5.728 rows=30 loops=1)
+               Group Key: doc.full_name, d.department_name
+               Batches: 1  Memory Usage: 217kB
+               ->  Hash Join  (cost=25.18..287.10 rows=6979 width=540) (actual time=0.060..3.838 rows=6981 loops=1)
+                     Hash Cond: (doc.department_id = d.department_id)
+                     ->  Hash Right Join  (cost=11.80..254.88 rows=6979 width=326) (actual time=0.036..2.654 rows=6981 loops=1)
+                           Hash Cond: (diag.doctor_id = doc.doctor_id)
+                           ->  Seq Scan on diagnoses diag  (cost=0.00..223.79 rows=6979 width=8) (actual time=0.008..1.080 rows=6980 loops=1)
+                           ->  Hash  (cost=10.80..10.80 rows=80 width=326) (actual time=0.019..0.020 rows=30 loops=1)
+                                 Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                 ->  Seq Scan on doctors doc  (cost=0.00..10.80 rows=80 width=326) (actual time=0.008..0.012 rows=30 loops=1)
+                     ->  Hash  (cost=11.50..11.50 rows=150 width=222) (actual time=0.015..0.015 rows=5 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           ->  Seq Scan on departments d  (cost=0.00..11.50 rows=150 width=222) (actual time=0.007..0.008 rows=5 loops=1)
+ Planning Time: 0.933 ms
+ Execution Time: 5.929 ms
+(20 rows)
+
+                                                                                         QUERY PLAN                                                                                          
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=934.37..937.82 rows=1380 width=59) (actual time=7.632..7.655 rows=169 loops=1)
+   Sort Key: (date_trunc('month'::text, diag.diagnosis_date)), (count(*)) DESC
+   Sort Method: quicksort  Memory: 35kB
+   ->  HashAggregate  (cost=838.25..862.40 rows=1380 width=59) (actual time=7.432..7.559 rows=169 loops=1)
+         Group Key: date_trunc('month'::text, diag.diagnosis_date), diag.finding_label
+         Batches: 1  Memory Usage: 97kB
+         ->  Hash Join  (cost=518.45..808.27 rows=2998 width=23) (actual time=3.261..6.744 rows=3007 loops=1)
+               Hash Cond: (v.patient_id = p.patient_id)
+               ->  Hash Join  (cost=387.27..661.72 rows=2998 width=23) (actual time=2.369..4.913 rows=3007 loops=1)
+                     Hash Cond: (s.visit_id = v.visit_id)
+                     ->  Hash Join  (cost=196.14..462.70 rows=2998 width=23) (actual time=1.130..2.924 rows=3007 loops=1)
+                           Hash Cond: (diag.scan_id = s.scan_id)
+                           ->  Seq Scan on diagnoses diag  (cost=0.00..258.69 rows=2998 width=23) (actual time=0.005..1.157 rows=3007 loops=1)
+                                 Filter: ((diagnosis_date >= '2024-01-01 00:00:00'::timestamp without time zone) AND (diagnosis_date <= '2024-12-31 00:00:00'::timestamp without time zone))
+                                 Rows Removed by Filter: 3973
+                           ->  Hash  (cost=126.06..126.06 rows=5606 width=8) (actual time=1.104..1.105 rows=5606 loops=1)
+                                 Buckets: 8192  Batches: 1  Memory Usage: 283kB
+                                 ->  Seq Scan on scans s  (cost=0.00..126.06 rows=5606 width=8) (actual time=0.003..0.597 rows=5606 loops=1)
+                     ->  Hash  (cost=121.06..121.06 rows=5606 width=8) (actual time=1.220..1.220 rows=5606 loops=1)
+                           Buckets: 8192  Batches: 1  Memory Usage: 283kB
+                           ->  Seq Scan on visits v  (cost=0.00..121.06 rows=5606 width=8) (actual time=0.004..0.689 rows=5606 loops=1)
+               ->  Hash  (cost=78.30..78.30 rows=4230 width=8) (actual time=0.878..0.891 rows=4230 loops=1)
+                     Buckets: 8192  Batches: 1  Memory Usage: 230kB
+                     ->  Seq Scan on patients p  (cost=0.00..78.30 rows=4230 width=8) (actual time=0.006..0.454 rows=4230 loops=1)
+ Planning Time: 0.342 ms
+ Execution Time: 7.736 ms
+(26 rows)
+
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+CREATE INDEX
+psql:performance.sql:128: ERROR:  relation "idx_diagnoses_finding_date" already exists
+                                                                       QUERY PLAN                                                                       
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nested Loop  (cost=124.23..356.80 rows=16 width=35) (actual time=0.073..0.797 rows=16 loops=1)
+   ->  Nested Loop  (cost=123.95..335.68 rows=62 width=29) (actual time=0.070..0.696 rows=64 loops=1)
+         ->  Hash Join  (cost=123.66..313.41 rows=62 width=29) (actual time=0.067..0.574 rows=64 loops=1)
+               Hash Cond: (s.scan_id = diag.scan_id)
+               ->  Seq Scan on scans s  (cost=0.00..126.06 rows=5606 width=8) (actual time=0.002..0.227 rows=5606 loops=1)
+               ->  Hash  (cost=122.89..122.89 rows=62 width=29) (actual time=0.061..0.062 rows=64 loops=1)
+                     Buckets: 1024  Batches: 1  Memory Usage: 13kB
+                     ->  Bitmap Heap Scan on diagnoses diag  (cost=4.76..122.89 rows=62 width=29) (actual time=0.026..0.055 rows=64 loops=1)
+                           Recheck Cond: ((finding_label)::text = 'Pneumonia'::text)
+                           Heap Blocks: exact=50
+                           ->  Bitmap Index Scan on idx_diagnoses_finding  (cost=0.00..4.75 rows=62 width=0) (actual time=0.017..0.017 rows=64 loops=1)
+                                 Index Cond: ((finding_label)::text = 'Pneumonia'::text)
+         ->  Index Scan using visits_pkey on visits v  (cost=0.28..0.36 rows=1 width=8) (actual time=0.002..0.002 rows=1 loops=64)
+               Index Cond: (visit_id = s.visit_id)
+   ->  Index Scan using patients_pkey on patients p  (cost=0.28..0.34 rows=1 width=10) (actual time=0.001..0.001 rows=0 loops=64)
+         Index Cond: (patient_id = v.patient_id)
+         Filter: ((age > 50) AND (gender = 'M'::bpchar))
+         Rows Removed by Filter: 1
+ Planning Time: 0.984 ms
+ Execution Time: 0.820 ms
+(20 rows)
+
+                                                                  QUERY PLAN                                                                  
+----------------------------------------------------------------------------------------------------------------------------------------------
+ WindowAgg  (cost=854.90..994.50 rows=6980 width=552) (actual time=2.853..2.865 rows=30 loops=1)
+   ->  Sort  (cost=854.90..872.35 rows=6980 width=544) (actual time=2.850..2.852 rows=30 loops=1)
+         Sort Key: d.department_name, (count(diag.diagnosis_id)) DESC
+         Sort Method: quicksort  Memory: 26kB
+         ->  HashAggregate  (cost=339.46..409.26 rows=6980 width=544) (actual time=2.807..2.839 rows=30 loops=1)
+               Group Key: doc.full_name, d.department_name
+               Batches: 1  Memory Usage: 217kB
+               ->  Hash Join  (cost=25.18..287.11 rows=6980 width=540) (actual time=0.018..1.850 rows=6981 loops=1)
+                     Hash Cond: (doc.department_id = d.department_id)
+                     ->  Hash Right Join  (cost=11.80..254.89 rows=6980 width=326) (actual time=0.011..1.186 rows=6981 loops=1)
+                           Hash Cond: (diag.doctor_id = doc.doctor_id)
+                           ->  Seq Scan on diagnoses diag  (cost=0.00..223.80 rows=6980 width=8) (actual time=0.001..0.297 rows=6980 loops=1)
+                           ->  Hash  (cost=10.80..10.80 rows=80 width=326) (actual time=0.008..0.008 rows=30 loops=1)
+                                 Buckets: 1024  Batches: 1  Memory Usage: 10kB
+                                 ->  Seq Scan on doctors doc  (cost=0.00..10.80 rows=80 width=326) (actual time=0.003..0.005 rows=30 loops=1)
+                     ->  Hash  (cost=11.50..11.50 rows=150 width=222) (actual time=0.005..0.005 rows=5 loops=1)
+                           Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                           ->  Seq Scan on departments d  (cost=0.00..11.50 rows=150 width=222) (actual time=0.003..0.003 rows=5 loops=1)
+ Planning Time: 0.097 ms
+ Execution Time: 2.891 ms
+(20 rows)
+
+                                                                                         QUERY PLAN                                                                                          
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=934.38..937.83 rows=1380 width=59) (actual time=3.971..3.976 rows=169 loops=1)
+   Sort Key: (date_trunc('month'::text, diag.diagnosis_date)), (count(*)) DESC
+   Sort Method: quicksort  Memory: 35kB
+   ->  HashAggregate  (cost=838.26..862.41 rows=1380 width=59) (actual time=3.879..3.927 rows=169 loops=1)
+         Group Key: date_trunc('month'::text, diag.diagnosis_date), diag.finding_label
+         Batches: 1  Memory Usage: 97kB
+         ->  Hash Join  (cost=518.45..808.28 rows=2998 width=23) (actual time=1.827..3.526 rows=3007 loops=1)
+               Hash Cond: (v.patient_id = p.patient_id)
+               ->  Hash Join  (cost=387.27..661.73 rows=2998 width=23) (actual time=1.343..2.566 rows=3007 loops=1)
+                     Hash Cond: (s.visit_id = v.visit_id)
+                     ->  Hash Join  (cost=196.14..462.72 rows=2998 width=23) (actual time=0.666..1.553 rows=3007 loops=1)
+                           Hash Cond: (diag.scan_id = s.scan_id)
+                           ->  Seq Scan on diagnoses diag  (cost=0.00..258.70 rows=2998 width=23) (actual time=0.001..0.536 rows=3007 loops=1)
+                                 Filter: ((diagnosis_date >= '2024-01-01 00:00:00'::timestamp without time zone) AND (diagnosis_date <= '2024-12-31 00:00:00'::timestamp without time zone))
+                                 Rows Removed by Filter: 3973
+                           ->  Hash  (cost=126.06..126.06 rows=5606 width=8) (actual time=0.653..0.654 rows=5606 loops=1)
+                                 Buckets: 8192  Batches: 1  Memory Usage: 283kB
+                                 ->  Seq Scan on scans s  (cost=0.00..126.06 rows=5606 width=8) (actual time=0.001..0.337 rows=5606 loops=1)
+                     ->  Hash  (cost=121.06..121.06 rows=5606 width=8) (actual time=0.671..0.671 rows=5606 loops=1)
+                           Buckets: 8192  Batches: 1  Memory Usage: 283kB
+                           ->  Seq Scan on visits v  (cost=0.00..121.06 rows=5606 width=8) (actual time=0.002..0.356 rows=5606 loops=1)
+               ->  Hash  (cost=78.30..78.30 rows=4230 width=8) (actual time=0.482..0.482 rows=4230 loops=1)
+                     Buckets: 8192  Batches: 1  Memory Usage: 230kB
+                     ->  Seq Scan on patients p  (cost=0.00..78.30 rows=4230 width=8) (actual time=0.002..0.263 rows=4230 loops=1)
+ Planning Time: 0.215 ms
+ Execution Time: 4.012 ms
+(26 rows)
+
+CREATE FUNCTION
+ diagnosis_id 
+--------------
+         6981
+(1 row)
+
+INSERT 0 1

@@ -1,0 +1,340 @@
+   finding_label    | total_cases 
+--------------------+-------------
+ No Finding         |        3044
+ Infiltration       |         967
+ Effusion           |         644
+ Atelectasis        |         508
+ Nodule             |         313
+ Mass               |         284
+ Pneumothorax       |         271
+ Consolidation      |         226
+ Pleural_Thickening |         176
+ Cardiomegaly       |         141
+ Emphysema          |         127
+ Edema              |         118
+ Fibrosis           |          84
+ Pneumonia          |          62
+ Hernia             |          13
+(15 rows)
+
+  department_name   | avg_patient_age | total_patients 
+--------------------+-----------------+----------------
+ General Medicine   |            55.7 |              7
+ Pulmonology        |            48.4 |           1530
+ Emergency Medicine |            45.9 |            108
+ Radiology          |            45.7 |           2896
+ Cardiology         |            45.5 |            194
+(5 rows)
+
+ patient_id | age | gender |     visit_date      | visit_type |  image_filename  | view_position |   finding_label    | severity | medication_name | dosage 
+------------+-----+--------+---------------------+------------+------------------+---------------+--------------------+----------+-----------------+--------
+         13 |  60 | M      | 2024-08-05 00:00:00 | Follow-up  | 00000013_005.png | AP            | Infiltration       | SEVERE   | Ceftriaxone     | 1g
+         13 |  60 | M      | 2024-08-05 00:00:00 | Follow-up  | 00000013_005.png | AP            | Emphysema          | SEVERE   | Tiotropium      | 18mcg
+         13 |  60 | M      | 2024-08-05 00:00:00 | Follow-up  | 00000013_005.png | AP            | Pleural_Thickening | SEVERE   | Ibuprofen       | 400mg
+         13 |  60 | M      | 2024-08-05 00:00:00 | Follow-up  | 00000013_005.png | AP            | Pneumothorax       | SEVERE   | Morphine        | 5mg
+         13 |  60 | M      | 2026-02-06 00:00:00 | Follow-up  | 00000013_026.png | AP            | Cardiomegaly       | MODERATE | Furosemide      | 40mg
+         13 |  60 | M      | 2026-02-06 00:00:00 | Follow-up  | 00000013_026.png | AP            | Emphysema          | MODERATE | Salbutamol      | 100mcg
+         17 |  77 | M      | 2023-11-27 00:00:00 | Follow-up  | 00000017_001.png | AP            | No Finding         | MILD     |                 | 
+         30 |  79 | M      | 2023-04-12 00:00:00 | Follow-up  | 00000030_001.png | PA            | Atelectasis        | MILD     | Salbutamol      | 100mcg
+         32 |  55 | F      | 2024-02-24 00:00:00 | Follow-up  | 00000032_001.png | AP            | Cardiomegaly       | SEVERE   | Enalapril       | 10mg
+         32 |  55 | F      | 2024-02-24 00:00:00 | Follow-up  | 00000032_001.png | AP            | Edema              | SEVERE   | Spironolactone  | 25mg
+         32 |  55 | F      | 2024-02-24 00:00:00 | Follow-up  | 00000032_001.png | AP            | Effusion           | SEVERE   | Furosemide      | 40mg
+         40 |  68 | M      | 2025-01-10 00:00:00 | Follow-up  | 00000040_003.png | PA            | Consolidation      | MODERATE | Levofloxacin    | 750mg
+         40 |  68 | M      | 2025-01-10 00:00:00 | Follow-up  | 00000040_003.png | PA            | Mass               | MODERATE | Dexamethasone   | 4mg
+         42 |  71 | M      | 2024-01-28 00:00:00 | Follow-up  | 00000042_002.png | AP            | No Finding         | MILD     |                 | 
+         57 |  71 | M      | 2023-04-08 00:00:00 | Follow-up  | 00000057_001.png | AP            | No Finding         | MILD     |                 | 
+         61 |  77 | M      | 2024-07-25 00:00:00 | Follow-up  | 00000061_002.png | PA            | Effusion           | MILD     | Prednisone      | 20mg
+         61 |  77 | M      | 2025-04-21 00:00:00 | Follow-up  | 00000061_019.png | AP            | No Finding         | MILD     |                 | 
+         61 |  77 | M      | 2026-08-17 00:00:00 | Follow-up  | 00000061_025.png | AP            | Effusion           | SEVERE   | Prednisone      | 20mg
+         61 |  77 | M      | 2026-08-17 00:00:00 | Follow-up  | 00000061_025.png | AP            | Consolidation      | SEVERE   | Azithromycin    | 500mg
+         61 |  77 | M      | 2026-08-17 00:00:00 | Follow-up  | 00000061_025.png | AP            | Infiltration       | SEVERE   | Amoxicillin     | 500mg
+         61 |  77 | M      | 2026-08-17 00:00:00 | Follow-up  | 00000061_025.png | AP            | Nodule             | SEVERE   | No medication   | N/A
+         79 |  63 | M      | 2024-10-04 00:00:00 | Emergency  | 00000079_000.png | PA            | Mass               | MILD     | Dexamethasone   | 4mg
+         80 |  67 | F      | 2024-02-12 00:00:00 | Follow-up  | 00000080_005.png | PA            | No Finding         | MILD     |                 | 
+         83 |  56 | F      | 2023-10-01 00:00:00 | Inpatient  | 00000083_000.png | PA            | No Finding         | MILD     |                 | 
+         84 |  57 | F      | 2023-09-27 00:00:00 | Outpatient | 00000084_000.png | PA            | Effusion           | MILD     | Furosemide      | 40mg
+         96 |  67 | F      | 2025-03-14 00:00:00 | Follow-up  | 00000096_006.png | PA            | Effusion           | MILD     | Prednisone      | 20mg
+         99 |  56 | F      | 2024-07-05 00:00:00 | Follow-up  | 00000099_006.png | AP            | No Finding         | MILD     |                 | 
+         99 |  56 | F      | 2024-12-04 00:00:00 | Follow-up  | 00000099_003.png | PA            | Effusion           | MILD     | Furosemide      | 40mg
+        103 |  60 | M      | 2024-06-11 00:00:00 | Follow-up  | 00000103_001.png | PA            | Pneumothorax       | MODERATE | Oxygen          | 2L/min
+        103 |  60 | M      | 2024-06-11 00:00:00 | Follow-up  | 00000103_001.png | PA            | Mass               | MODERATE | Dexamethasone   | 4mg
+        116 |  75 | F      | 2025-10-08 00:00:00 | Follow-up  | 00000116_013.png | AP            | Cardiomegaly       | MODERATE | Furosemide      | 40mg
+        116 |  75 | F      | 2025-10-08 00:00:00 | Follow-up  | 00000116_013.png | AP            | Consolidation      | MODERATE | Azithromycin    | 500mg
+        116 |  75 | F      | 2026-06-11 00:00:00 | Follow-up  | 00000116_019.png | AP            | Consolidation      | MILD     | Azithromycin    | 500mg
+        116 |  75 | F      | 2026-11-23 00:00:00 | Follow-up  | 00000116_032.png | AP            | Cardiomegaly       | MODERATE | Furosemide      | 40mg
+        116 |  75 | F      | 2026-11-23 00:00:00 | Follow-up  | 00000116_032.png | AP            | Consolidation      | MODERATE | Azithromycin    | 500mg
+        116 |  75 | F      | 2027-12-08 00:00:00 | Follow-up  | 00000116_040.png | AP            | Cardiomegaly       | MODERATE | Furosemide      | 40mg
+        116 |  75 | F      | 2027-12-08 00:00:00 | Follow-up  | 00000116_040.png | AP            | Consolidation      | MODERATE | Levofloxacin    | 750mg
+        118 |  73 | M      | 2023-12-29 00:00:00 | Follow-up  | 00000118_011.png | PA            | Pneumothorax       | MILD     | Morphine        | 5mg
+        121 |  54 | M      | 2023-09-13 00:00:00 | Follow-up  | 00000121_004.png | AP            | No Finding         | MILD     |                 | 
+        127 |  56 | F      | 2024-02-09 00:00:00 | Follow-up  | 00000127_007.png | AP            | Effusion           | MILD     | Prednisone      | 20mg
+        132 |  60 | F      | 2023-04-26 00:00:00 | Follow-up  | 00000132_002.png | PA            | Consolidation      | MODERATE | Levofloxacin    | 750mg
+        132 |  60 | F      | 2023-04-26 00:00:00 | Follow-up  | 00000132_002.png | PA            | Pleural_Thickening | MODERATE | Ibuprofen       | 400mg
+        154 |  56 | F      | 2023-08-13 00:00:00 | Follow-up  | 00000154_001.png | PA            | Infiltration       | MODERATE | Amoxicillin     | 500mg
+        154 |  56 | F      | 2023-08-13 00:00:00 | Follow-up  | 00000154_001.png | PA            | Nodule             | MODERATE | No medication   | N/A
+        165 |  78 | M      | 2025-03-14 00:00:00 | Follow-up  | 00000165_008.png | PA            | No Finding         | MILD     |                 | 
+        175 |  60 | M      | 2023-09-30 00:00:00 | Follow-up  | 00000175_001.png | AP            | Atelectasis        | MILD     | Ipratropium     | 20mcg
+        175 |  60 | M      | 2023-10-06 00:00:00 | Follow-up  | 00000175_002.png | AP            | Atelectasis        | MILD     | Salbutamol      | 100mcg
+        181 |  47 | F      | 2023-11-19 00:00:00 | Follow-up  | 00000181_001.png | PA            | Fibrosis           | MILD     | Prednisone      | 10mg
+        181 |  47 | F      | 2024-12-05 00:00:00 | Follow-up  | 00000181_017.png | AP            | Infiltration       | MILD     | Amoxicillin     | 500mg
+        181 |  47 | F      | 2027-05-25 00:00:00 | Follow-up  | 00000181_035.png | AP            | Infiltration       | MILD     | Ceftriaxone     | 1g
+(50 rows)
+
+  department_name   |     full_name      |   specialization   | diagnoses_made 
+--------------------+--------------------+--------------------+----------------
+ Radiology          | Dr. Fatima Ali     | Radiologist        |            646
+ Radiology          | Dr. Amina Hassan   | Radiologist        |            618
+ Radiology          | Dr. James Odhiambo | Radiologist        |            600
+ Radiology          | Dr. Chen Wang      | Radiologist        |            596
+ Radiology          | Dr. Rajesh Kumar   | Radiologist        |            592
+ Radiology          | Dr. Maria Santos   | Radiologist        |            589
+ Pulmonology        | Dr. Mohamed Juma   | Pulmonologist      |            490
+ Pulmonology        | Dr. Priya Sharma   | Pulmonologist      |            485
+ Pulmonology        | Dr. Lisa Chen      | Pulmonologist      |            478
+ Pulmonology        | Dr. Ahmed Saleh    | Pulmonologist      |            462
+ Pulmonology        | Dr. David Kim      | Pulmonologist      |            444
+ Pulmonology        | Dr. Sarah Johnson  | Pulmonologist      |            435
+ Emergency Medicine | Dr. Diana Otieno   | Emergency Medicine |             51
+ Emergency Medicine | Dr. Hassan Mushi   | Emergency Medicine |             49
+ Emergency Medicine | Dr. Sofia Martinez | Emergency Medicine |             48
+ Cardiology         | Dr. Robert Brown   | Cardiologist       |             47
+ Cardiology         | Dr. Aisha Mbeki    | Cardiologist       |             46
+ Cardiology         | Dr. Grace Wanjiku  | Cardiologist       |             45
+ Cardiology         | Dr. Ana Garcia     | Cardiologist       |             45
+ Emergency Medicine | Dr. Rachel Adams   | Emergency Medicine |             44
+ Emergency Medicine | Dr. Ali Bakari     | Emergency Medicine |             44
+ Cardiology         | Dr. Yuki Tanaka    | Cardiologist       |             42
+ Emergency Medicine | Dr. Peter Ngugi    | Emergency Medicine |             35
+ Cardiology         | Dr. Ivan Petrov    | Cardiologist       |             34
+ General Medicine   | Dr. Nadia Khamis   | General Physician  |              4
+ General Medicine   | Dr. Omar Said      | General Physician  |              3
+ General Medicine   | Dr. Helen Osei     | General Physician  |              2
+ General Medicine   | Dr. John Mwangi    | General Physician  |              2
+ General Medicine   | Dr. Emily Wright   | General Physician  |              2
+ General Medicine   | Dr. Marco Rossi    | General Physician  |              0
+(30 rows)
+
+ patient_id | age | gender | diagnosis_count 
+------------+-----+--------+-----------------
+      10007 |  58 | M      |              19
+      20213 |  72 | F      |              17
+      10092 |  46 | F      |              14
+      11925 |  54 | M      |              14
+      12834 |  33 | M      |              13
+       1301 |  57 | F      |              13
+      17138 |  23 | M      |              13
+       1836 |  48 | F      |              13
+      20326 |  26 | F      |              12
+      11379 |   9 | M      |              12
+      12021 |  24 | M      |              11
+       8008 |  21 | F      |              11
+      17504 |  11 | F      |              11
+      13249 |  13 | M      |              11
+      27726 |  58 | M      |              11
+      16291 |  53 | M      |              10
+       4858 |  44 | F      |              10
+      13670 |  55 | M      |              10
+       9925 |  56 | M      |              10
+       1373 |  54 | M      |              10
+(20 rows)
+
+ scan_id | image_filename | view_position | scan_date 
+---------+----------------+---------------+-----------
+(0 rows)
+
+ patient_id | age | gender |     visit_date      | follow_up_number |   finding_label    | severity |    doctor_name     
+------------+-----+--------+---------------------+------------------+--------------------+----------+--------------------
+         13 |  60 | M      | 2024-08-05 00:00:00 |                5 | Emphysema          | SEVERE   | Dr. Sarah Johnson
+         13 |  60 | M      | 2024-08-05 00:00:00 |                5 | Pneumothorax       | SEVERE   | Dr. Rachel Adams
+         13 |  60 | M      | 2024-08-05 00:00:00 |                5 | Pleural_Thickening | SEVERE   | Dr. Priya Sharma
+         13 |  60 | M      | 2024-08-05 00:00:00 |                5 | Infiltration       | SEVERE   | Dr. Ahmed Saleh
+         13 |  60 | M      | 2026-02-06 00:00:00 |               26 | Cardiomegaly       | MODERATE | Dr. Yuki Tanaka
+         13 |  60 | M      | 2026-02-06 00:00:00 |               26 | Emphysema          | MODERATE | Dr. David Kim
+         32 |  55 | F      | 2024-02-24 00:00:00 |                1 | Edema              | SEVERE   | Dr. Robert Brown
+         32 |  55 | F      | 2024-02-24 00:00:00 |                1 | Cardiomegaly       | SEVERE   | Dr. Grace Wanjiku
+         32 |  55 | F      | 2024-02-24 00:00:00 |                1 | Effusion           | SEVERE   | Dr. Sarah Johnson
+         40 |  68 | M      | 2025-01-10 00:00:00 |                3 | Consolidation      | MODERATE | Dr. Lisa Chen
+         40 |  68 | M      | 2025-01-10 00:00:00 |                3 | Mass               | MODERATE | Dr. Rajesh Kumar
+         61 |  77 | M      | 2024-07-25 00:00:00 |                2 | Effusion           | MILD     | Dr. David Kim
+         61 |  77 | M      | 2025-04-21 00:00:00 |               19 | No Finding         | MILD     | Dr. Rajesh Kumar
+         61 |  77 | M      | 2026-08-17 00:00:00 |               25 | Effusion           | SEVERE   | Dr. Lisa Chen
+         61 |  77 | M      | 2026-08-17 00:00:00 |               25 | Infiltration       | SEVERE   | Dr. Sarah Johnson
+         61 |  77 | M      | 2026-08-17 00:00:00 |               25 | Consolidation      | SEVERE   | Dr. Sarah Johnson
+         61 |  77 | M      | 2026-08-17 00:00:00 |               25 | Nodule             | SEVERE   | Dr. Rajesh Kumar
+         99 |  56 | F      | 2024-07-05 00:00:00 |                6 | No Finding         | MILD     | Dr. Rajesh Kumar
+         99 |  56 | F      | 2024-12-04 00:00:00 |                3 | Effusion           | MILD     | Dr. Mohamed Juma
+        103 |  60 | M      | 2024-06-11 00:00:00 |                1 | Pneumothorax       | MODERATE | Dr. Sofia Martinez
+        103 |  60 | M      | 2024-06-11 00:00:00 |                1 | Mass               | MODERATE | Dr. Fatima Ali
+        116 |  75 | F      | 2025-10-08 00:00:00 |               13 | Cardiomegaly       | MODERATE | Dr. Robert Brown
+        116 |  75 | F      | 2025-10-08 00:00:00 |               13 | Consolidation      | MODERATE | Dr. David Kim
+        116 |  75 | F      | 2026-06-11 00:00:00 |               19 | Consolidation      | MILD     | Dr. Sarah Johnson
+        116 |  75 | F      | 2026-11-23 00:00:00 |               32 | Cardiomegaly       | MODERATE | Dr. Robert Brown
+        116 |  75 | F      | 2026-11-23 00:00:00 |               32 | Consolidation      | MODERATE | Dr. Priya Sharma
+        116 |  75 | F      | 2027-12-08 00:00:00 |               40 | Cardiomegaly       | MODERATE | Dr. Robert Brown
+        116 |  75 | F      | 2027-12-08 00:00:00 |               40 | Consolidation      | MODERATE | Dr. Priya Sharma
+        132 |  60 | F      | 2023-04-26 00:00:00 |                2 | Pleural_Thickening | MODERATE | Dr. Priya Sharma
+        132 |  60 | F      | 2023-04-26 00:00:00 |                2 | Consolidation      | MODERATE | Dr. David Kim
+        154 |  56 | F      | 2023-08-13 00:00:00 |                1 | Nodule             | MODERATE | Dr. Chen Wang
+        154 |  56 | F      | 2023-08-13 00:00:00 |                1 | Infiltration       | MODERATE | Dr. Mohamed Juma
+        175 |  60 | M      | 2023-09-30 00:00:00 |                1 | Atelectasis        | MILD     | Dr. Mohamed Juma
+        175 |  60 | M      | 2023-10-06 00:00:00 |                2 | Atelectasis        | MILD     | Dr. Priya Sharma
+        181 |  47 | F      | 2023-11-19 00:00:00 |                1 | Fibrosis           | MILD     | Dr. David Kim
+        181 |  47 | F      | 2024-12-05 00:00:00 |               17 | Infiltration       | MILD     | Dr. Ahmed Saleh
+        181 |  47 | F      | 2027-05-25 00:00:00 |               35 | Infiltration       | MILD     | Dr. David Kim
+        246 |  51 | M      | 2023-08-15 00:00:00 |                4 | No Finding         | MILD     | Dr. Maria Santos
+        246 |  51 | M      | 2024-03-15 00:00:00 |               11 | Infiltration       | MILD     | Dr. Lisa Chen
+        246 |  51 | M      | 2025-02-07 00:00:00 |               16 | Consolidation      | MODERATE | Dr. Ahmed Saleh
+        246 |  51 | M      | 2025-02-07 00:00:00 |               16 | Mass               | MODERATE | Dr. Rajesh Kumar
+        246 |  51 | M      | 2025-02-12 00:00:00 |                3 | No Finding         | MILD     | Dr. Maria Santos
+        246 |  51 | M      | 2025-11-06 00:00:00 |               18 | No Finding         | MILD     | Dr. Amina Hassan
+        248 |  87 | M      | 2024-08-26 00:00:00 |               20 | Atelectasis        | SEVERE   | Dr. Ahmed Saleh
+        248 |  87 | M      | 2024-08-26 00:00:00 |               20 | Pleural_Thickening | SEVERE   | Dr. Lisa Chen
+        248 |  87 | M      | 2024-08-26 00:00:00 |               20 | Mass               | SEVERE   | Dr. Fatima Ali
+        248 |  87 | M      | 2024-08-26 00:00:00 |               20 | Infiltration       | SEVERE   | Dr. Ahmed Saleh
+        324 |  31 | M      | 2024-04-21 00:00:00 |                1 | Nodule             | MODERATE | Dr. Maria Santos
+        324 |  31 | M      | 2024-04-21 00:00:00 |                1 | Infiltration       | MODERATE | Dr. Lisa Chen
+        359 |  82 | F      | 2024-04-27 00:00:00 |                6 | No Finding         | MILD     | Dr. Rajesh Kumar
+(50 rows)
+
+  month  |   finding_label    | case_count 
+---------+--------------------+------------
+ 2038-02 | No Finding         |          1
+ 2037-08 | Atelectasis        |          1
+ 2037-03 | Consolidation      |          1
+ 2037-01 | Consolidation      |          1
+ 2036-12 | Consolidation      |          1
+ 2036-05 | Pneumothorax       |          1
+ 2036-05 | No Finding         |          1
+ 2036-05 | Infiltration       |          1
+ 2035-07 | No Finding         |          1
+ 2035-06 | No Finding         |          1
+ 2035-03 | Consolidation      |          1
+ 2035-03 | No Finding         |          1
+ 2034-07 | Pleural_Thickening |          1
+ 2034-07 | Effusion           |          1
+ 2033-06 | Atelectasis        |          1
+ 2033-06 | Effusion           |          1
+ 2033-05 | Effusion           |          1
+ 2033-05 | Infiltration       |          1
+ 2033-02 | No Finding         |          1
+ 2033-01 | Pneumothorax       |          2
+ 2033-01 | Effusion           |          1
+ 2032-09 | Pneumonia          |          1
+ 2032-09 | Edema              |          1
+ 2032-09 | Consolidation      |          1
+ 2032-09 | Effusion           |          1
+ 2032-07 | Effusion           |          1
+ 2032-07 | Cardiomegaly       |          1
+ 2032-07 | Consolidation      |          1
+ 2032-06 | Effusion           |          1
+ 2032-04 | Pleural_Thickening |          1
+ 2032-03 | Infiltration       |          1
+ 2032-02 | Infiltration       |          2
+ 2032-02 | Effusion           |          2
+ 2032-02 | Consolidation      |          2
+ 2032-02 | Atelectasis        |          2
+ 2032-02 | Pneumonia          |          1
+ 2031-12 | Pneumothorax       |          1
+ 2031-12 | Emphysema          |          1
+ 2031-09 | Infiltration       |          2
+ 2031-09 | Effusion           |          2
+ 2031-09 | Nodule             |          1
+ 2031-09 | Pneumothorax       |          1
+ 2031-09 | Cardiomegaly       |          1
+ 2031-08 | Nodule             |          1
+ 2031-08 | Consolidation      |          1
+ 2031-08 | Effusion           |          1
+ 2031-07 | Fibrosis           |          1
+ 2031-07 | Infiltration       |          1
+ 2031-07 | Cardiomegaly       |          1
+ 2031-07 | Consolidation      |          1
+(50 rows)
+
+     full_name      |  department_name   |   specialization   | total_diagnoses | dept_rank 
+--------------------+--------------------+--------------------+-----------------+-----------
+ Dr. Robert Brown   | Cardiology         | Cardiologist       |              47 |         1
+ Dr. Aisha Mbeki    | Cardiology         | Cardiologist       |              46 |         2
+ Dr. Ana Garcia     | Cardiology         | Cardiologist       |              45 |         3
+ Dr. Grace Wanjiku  | Cardiology         | Cardiologist       |              45 |         3
+ Dr. Yuki Tanaka    | Cardiology         | Cardiologist       |              42 |         5
+ Dr. Ivan Petrov    | Cardiology         | Cardiologist       |              34 |         6
+ Dr. Diana Otieno   | Emergency Medicine | Emergency Medicine |              51 |         1
+ Dr. Hassan Mushi   | Emergency Medicine | Emergency Medicine |              49 |         2
+ Dr. Sofia Martinez | Emergency Medicine | Emergency Medicine |              48 |         3
+ Dr. Rachel Adams   | Emergency Medicine | Emergency Medicine |              44 |         4
+ Dr. Ali Bakari     | Emergency Medicine | Emergency Medicine |              44 |         4
+ Dr. Peter Ngugi    | Emergency Medicine | Emergency Medicine |              35 |         6
+ Dr. Nadia Khamis   | General Medicine   | General Physician  |               4 |         1
+ Dr. Omar Said      | General Medicine   | General Physician  |               3 |         2
+ Dr. Emily Wright   | General Medicine   | General Physician  |               2 |         3
+ Dr. John Mwangi    | General Medicine   | General Physician  |               2 |         3
+ Dr. Helen Osei     | General Medicine   | General Physician  |               2 |         3
+ Dr. Marco Rossi    | General Medicine   | General Physician  |               0 |         6
+ Dr. Mohamed Juma   | Pulmonology        | Pulmonologist      |             490 |         1
+ Dr. Priya Sharma   | Pulmonology        | Pulmonologist      |             485 |         2
+ Dr. Lisa Chen      | Pulmonology        | Pulmonologist      |             478 |         3
+ Dr. Ahmed Saleh    | Pulmonology        | Pulmonologist      |             462 |         4
+ Dr. David Kim      | Pulmonology        | Pulmonologist      |             444 |         5
+ Dr. Sarah Johnson  | Pulmonology        | Pulmonologist      |             435 |         6
+ Dr. Fatima Ali     | Radiology          | Radiologist        |             646 |         1
+ Dr. Amina Hassan   | Radiology          | Radiologist        |             618 |         2
+ Dr. James Odhiambo | Radiology          | Radiologist        |             600 |         3
+ Dr. Chen Wang      | Radiology          | Radiologist        |             596 |         4
+ Dr. Rajesh Kumar   | Radiology          | Radiologist        |             592 |         5
+ Dr. Maria Santos   | Radiology          | Radiologist        |             589 |         6
+(30 rows)
+
+ patient_id | age | gender |     visit_date      | visit_number | cumulative_visits 
+------------+-----+--------+---------------------+--------------+-------------------
+         13 |  60 | M      | 2024-08-05 00:00:00 |            1 |                 1
+         13 |  60 | M      | 2026-02-06 00:00:00 |            2 |                 2
+         17 |  77 | M      | 2023-11-27 00:00:00 |            1 |                 1
+         30 |  79 | M      | 2023-04-12 00:00:00 |            1 |                 1
+         32 |  55 | F      | 2024-02-24 00:00:00 |            1 |                 1
+         40 |  68 | M      | 2025-01-10 00:00:00 |            1 |                 1
+         42 |  71 | M      | 2024-01-28 00:00:00 |            1 |                 1
+         57 |  71 | M      | 2023-04-08 00:00:00 |            1 |                 1
+         61 |  77 | M      | 2024-07-25 00:00:00 |            1 |                 1
+         61 |  77 | M      | 2025-04-21 00:00:00 |            2 |                 2
+         61 |  77 | M      | 2026-08-17 00:00:00 |            3 |                 3
+         79 |  63 | M      | 2024-10-04 00:00:00 |            1 |                 1
+         80 |  67 | F      | 2024-02-12 00:00:00 |            1 |                 1
+         83 |  56 | F      | 2023-10-01 00:00:00 |            1 |                 1
+         84 |  57 | F      | 2023-09-27 00:00:00 |            1 |                 1
+         96 |  67 | F      | 2025-03-14 00:00:00 |            1 |                 1
+         99 |  56 | F      | 2024-07-05 00:00:00 |            1 |                 1
+         99 |  56 | F      | 2024-12-04 00:00:00 |            2 |                 2
+        103 |  60 | M      | 2024-06-11 00:00:00 |            1 |                 1
+        116 |  75 | F      | 2025-10-08 00:00:00 |            1 |                 1
+        116 |  75 | F      | 2026-06-11 00:00:00 |            2 |                 2
+        116 |  75 | F      | 2026-11-23 00:00:00 |            3 |                 3
+        116 |  75 | F      | 2027-12-08 00:00:00 |            4 |                 4
+        118 |  73 | M      | 2023-12-29 00:00:00 |            1 |                 1
+        121 |  54 | M      | 2023-09-13 00:00:00 |            1 |                 1
+        127 |  56 | F      | 2024-02-09 00:00:00 |            1 |                 1
+        132 |  60 | F      | 2023-04-26 00:00:00 |            1 |                 1
+        154 |  56 | F      | 2023-08-13 00:00:00 |            1 |                 1
+        165 |  78 | M      | 2025-03-14 00:00:00 |            1 |                 1
+        175 |  60 | M      | 2023-09-30 00:00:00 |            1 |                 1
+        175 |  60 | M      | 2023-10-06 00:00:00 |            2 |                 2
+        181 |  47 | F      | 2023-11-19 00:00:00 |            1 |                 1
+        181 |  47 | F      | 2024-12-05 00:00:00 |            2 |                 2
+        181 |  47 | F      | 2027-05-25 00:00:00 |            3 |                 3
+        188 |  45 | M      | 2024-07-27 00:00:00 |            1 |                 1
+        194 |  84 | F      | 2024-12-30 00:00:00 |            1 |                 1
+        206 |  30 | M      | 2023-09-10 00:00:00 |            1 |                 1
+        231 |  56 | F      | 2024-12-29 00:00:00 |            1 |                 1
+        232 |  45 | M      | 2023-11-18 00:00:00 |            1 |                 1
+        239 |  49 | F      | 2023-06-14 00:00:00 |            1 |                 1
+        242 |  61 | F      | 2024-07-04 00:00:00 |            1 |                 1
+        243 |  69 | M      | 2023-11-18 00:00:00 |            1 |                 1
+        246 |  51 | M      | 2023-08-15 00:00:00 |            1 |                 1
+        246 |  51 | M      | 2024-03-15 00:00:00 |            2 |                 2
+        246 |  51 | M      | 2025-02-07 00:00:00 |            3 |                 3
+        246 |  51 | M      | 2025-02-12 00:00:00 |            4 |                 4
+        246 |  51 | M      | 2025-11-06 00:00:00 |            5 |                 5
+        248 |  87 | M      | 2024-08-26 00:00:00 |            1 |                 1
+        250 |  50 | M      | 2024-06-12 00:00:00 |            1 |                 1
+        251 |  44 | M      | 2023-02-10 00:00:00 |            1 |                 1
+(50 rows)
+
